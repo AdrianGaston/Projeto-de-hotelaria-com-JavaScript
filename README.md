@@ -1,4 +1,4 @@
-# Projeto de hotelaria com JavaScript 📝🚀
+# Projeto de hotelaria com JavaScript 📝🏨
 
 ### Status do projeto 🚧📈
 - Em desenvolvimento...
