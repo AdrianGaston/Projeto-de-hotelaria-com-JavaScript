@@ -15,11 +15,11 @@
 - ***Adrian Herrmann*** - Desenvolvedor principal.
 ##
 
-### Objetivo do Software 🎯🏆
+### Objetivo do software 🎯🏆
 Permitir que os usuários, colaboradores e hóspedes, realizem reservas de hotel de forma eficiente e rápida, possibilitando o gerenciamento de reservas mediante os quartos, check-ins, check-outs e informações dos hóspedes.
 ##
 
-### Funcionalidades do Sistema 🛠🧩
+### Funcionalidades do sistema 🛠🧩
 - Verificação de disponibilidade.
 - Cadastro de hóspedes.
 - Realização de reservas.
