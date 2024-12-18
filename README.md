@@ -16,7 +16,7 @@
 ##
 
 ### Objetivo do software 🎯🏆
-Permitir que os usuários, colaboradores e hóspedes, realizem reservas de hotel de forma eficiente e rápida, possibilitando o gerenciamento de reservas mediante os quartos, check-ins, check-outs e informações dos hóspedes.
+Permitir que os usuários realizem reservas de hotel de forma eficiente e rápida, possibilitando o gerenciamento de reservas mediante os quartos, check-ins, check-outs e informações dos hóspedes.
 ##
 
 ### Funcionalidades do sistema 🛠🧩
