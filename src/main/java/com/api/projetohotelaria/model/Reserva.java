@@ -1,0 +1,83 @@
+package com.api.projetohotelaria.model;
+
+import java.time.LocalDate;
+
+
+public class Reserva {
+    private Integer id;
+    private LocalDate checkin;
+    private LocalDate checkout;
+    private Quarto quarto;
+    private Hospede hospede;
+    private int totalDias;
+    private Double valorTotal;
+
+    public Reserva() {
+    }
+
+    public Reserva(Integer id, LocalDate checkin, LocalDate checkout, Quarto quarto, Hospede hospede, int totalDias, Double valorTotal) {
+        this.id = id;
+        this.checkin = checkin;
+        this.checkout = checkout;
+        this.quarto = quarto;
+        this.hospede = hospede;
+        this.totalDias = totalDias;
+        this.valorTotal = valorTotal;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public LocalDate getCheckin() {
+        return checkin;
+    }
+
+    public void setCheckin(LocalDate checkin) {
+        this.checkin = checkin;
+    }
+
+    public LocalDate getCheckout() {
+        return checkout;
+    }
+
+    public void setCheckout(LocalDate checkout) {
+        this.checkout = checkout;
+    }
+
+    public Quarto getQuarto() {
+        return quarto;
+    }
+
+    public void setQuarto(Quarto quarto) {
+        this.quarto = quarto;
+    }
+
+    public Hospede getHospede() {
+        return hospede;
+    }
+
+    public void setHospede(Hospede hospede) {
+        this.hospede = hospede;
+    }
+
+    public int getTotalDias() {
+        return totalDias;
+    }
+
+    public void setTotalDias(int totalDias) {
+        this.totalDias = totalDias;
+    }
+
+    public Double getValorTotal() {
+        return totalDias * quarto.getValor();
+    }
+
+    public void setValorTotal(Double valorTotal) {
+        this.valorTotal = valorTotal;
+    }   
+}
