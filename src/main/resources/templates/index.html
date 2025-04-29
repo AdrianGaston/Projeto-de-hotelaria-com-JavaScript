@@ -7,8 +7,8 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" href="/bootstrap/css/bootstrap.min.css">
 
-            <!-- CSS personalizado -->
-            <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css" />
+        <!-- CSS personalizado -->
+        <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css" />
     </head>
     <body>
 
@@ -23,10 +23,11 @@
 
         <br/><br/>
         <div>
-            <img th:src="@{/images/reception.jpg}" alt="Hotel Continental" >
+            <img th:src="@{/images/reception.jpg}" src="/images/reception.jpg" alt="Hotel Continental" 
+                 style="max-width: 100%; height: auto; display: block;">
         </div>
 
-        <!-- Bootstrap JS  -->
+        <!-- Bootstrap JS -->
         <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}" src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 
         <!-- Script.js -->

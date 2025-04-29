@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/*Banner*/
 .banner { 
     background-color: rgb(0, 20, 45);
     height: 100px;
@@ -8,6 +9,19 @@
     align-items: center; 
     padding: 0 20px; 
     box-sizing: border-box; 
+    position: relative;
+}
+
+.banner h1 {
+    color: rgb(255, 239, 214);
+    margin: 0;
+    font-size: 2.5rem;
+    font-family: "Garamond", "Times New Roman", serif;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%);
+    width: max-content; 
 }
 
 .btn-reservar {
@@ -18,5 +32,91 @@
     font-size: 18px; 
     cursor: pointer;
     border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
+.btn-reservar:hover {
+    background-color: #0056b3;
+}
+
+/*Formulário*/
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container h2 {
+    color: #343a40;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px;
+    border-bottom: 2px solid #e9ecef;
+    padding-bottom: 10px;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0 15px 0;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.form-control:focus {
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/*Botões*/
+.button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 12px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-align: center;
+    flex: 1;
+    border: none;
+    text-decoration: none;
+}
+
+/*Botão primário (azul)*/
+.btn-primary {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/*Botão secundário (cinza)*/
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+}
+
+/*Textos*/
+p {
+    margin: 0;
+    color: #495057;
+    font-weight: 500;
+}
