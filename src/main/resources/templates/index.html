@@ -1,20 +1,35 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>Página principal</title>
-        
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" href="/bootstrap/css/bootstrap.min.css">
+
+            <!-- CSS personalizado -->
+            <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css" />
     </head>
     <body>
-        <div>Hotel Continental</div>
-        
-        <img th:src="@{/images/Hotel Continental.png}" height="50px">
-        
-        <br/>
-        <a href="/reservar">
-            <button type="button">Reservar</button>
-        </a><br/>
-        
+
+        <div class="banner">
+            <!-- Logo -->
+            <img th:src="@{/images/HotelContinental.png}" src="/images/HotelContinental.png" alt="Hotel Continental" height="100px">
+
+                <a href="/reservar">
+                    <button type="button" class="btn btn-primary btn-lg btn-reservar">Reservar</button>
+                </a>
+        </div>
+
+        <br/><br/>
+        <div>
+            <img th:src="@{/images/reception.jpg}" alt="Hotel Continental" >
+        </div>
+
+        <!-- Bootstrap JS  -->
+        <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}" src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Script.js -->
+        <script th:src="@{/js/script.js}" src="/js/script.js"></script>
     </body>
 </html>
