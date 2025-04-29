@@ -1,6 +1,7 @@
 package com.api.projetohotelaria.model;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 
 public class Reserva {
@@ -66,13 +67,17 @@ public class Reserva {
     }
 
     public int getTotalDias() {
-        return totalDias;
+        int dias;
+        
+        dias = (int) ChronoUnit.DAYS.between(checkin, checkout);
+
+        return dias;
     }
 
     public void setTotalDias(int totalDias) {
         this.totalDias = totalDias;
     }
-
+    
     public Double getValorTotal() {
         return totalDias * quarto.getValor();
     }
