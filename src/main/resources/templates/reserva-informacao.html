@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Página principal</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" href="/bootstrap/css/bootstrap.min.css">
+
+            <!-- CSS personalizado -->
+            <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css" />
+    </head>
+    <body>
+
+        <div class="banner">
+            <!-- Logo -->
+            <img th:src="@{/images/HotelContinental.png}" src="/images/HotelContinental.png" alt="Hotel Continental" height="100px">
+
+                <h1>Informações da Reserva</h1>
+        </div>
+
+        <br/><br/>
+
+        <div class="container">
+            <h2>Detalhes da sua Reserva</h2>
+
+            <br/>
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <!-- <strong>ID:</strong> <span th:text="${reserva.id}"></span> -->
+                    <strong>ID:</strong> <span>1</span>
+                </li>
+
+                <br/>
+                <li class="list-group-item">
+                    <!-- <strong>Check-In:</strong> <span th:text="${reserva.checkin}"></span> -->
+                    <strong>Check-In:</strong> <span>10/10/2025</span>
+                </li>
+
+                <br/>
+                <li class="list-group-item">
+                    <!-- <strong>Check-out:</strong> <span th:text="${reserva.checkout}"></span> -->
+                    <strong>Check-out:</strong> <span>12/10/2025</span>
+                </li>
+
+                <br/>
+                <li class="list-group-item">
+                    <!-- <strong>Quarto:</strong> <span th:text="${reserva.quarto != null ? reserva.quarto.tipo : 'Sem quarto'}"></span> -->
+                    <strong>Quarto:</strong> <span>Suite</span>
+                </li>
+
+                <br/>
+                <li class="list-group-item">
+                    <!-- <strong>Hóspede:</strong> <span th:text="${reserva.hospede != null ? reserva.hospede.nome : 'Sem hospede'}"></span> -->
+                    <strong>Hóspede:</strong> <span>Raul Augusto</span>
+                </li>
+
+                <br/>
+                <li class="list-group-item">
+                    <!-- <strong>Total dias:</strong> <span th:text="${reserva.totalDias}"></span> -->
+                    <strong>Total dias:</strong> <span>2</span>
+                </li>
+
+                <br/>
+                <li class="list-group-item">
+                    <!-- <strong>Valor total:</strong> <span th:text="${reserva.valorTotal}"></span> -->
+                    <strong>Valor total: R$</strong> <span>500.00</span>
+                </li>
+            </ul>
+
+            <br/>
+            <div class="form-group button-group">
+                <button type="button" class="btn btn-primary" th:onclick="'window.location.href=\'' + @{/index} + '\''">Ok</button>
+
+            </div>
+        </div>
+
+        <!-- Bootstrap JS -->
+        <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}" src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+        <!-- Script.js -->
+        <script th:src="@{/js/script.js}" src="/js/script.js"></script>
+    </body>
+</html>

@@ -17,6 +17,12 @@ public class MiscController {
     public String paginaReserva(Model model) {
         model.addAttribute("reserva", new Reserva());
         return "reservar";
-    }  
+    }   
     
+    @GetMapping("/reserva-informacao")
+    public String informacaoReserva(Model model) {
+        model.addAttribute("reserva", new Reserva());
+        
+        return "reserva-informacao";
+    }
 }

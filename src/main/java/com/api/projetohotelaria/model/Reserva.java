@@ -1,14 +1,27 @@
 package com.api.projetohotelaria.model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
-
+@Entity
 public class Reserva {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private LocalDate checkin;
     private LocalDate checkout;
+    
+    @ManyToOne
     private Quarto quarto;
+    
+    @ManyToOne
     private Hospede hospede;
     private int totalDias;
     private Double valorTotal;

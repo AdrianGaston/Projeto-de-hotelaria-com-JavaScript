@@ -32,16 +32,25 @@
                     <p>Check-Out:</p>
                     <input type="date" th:field="*{checkout}" class="form-control" />
                 </div>
-
+                
                 <div class="form-group">
                     <p>Quarto:</p>
-                    <!-- Seleciona o tipo de quarto -->
+                    
                     <select class="form-control">
                         <option>Standard</option>
                         <option>Suíte</option>
                         <option>Master</option>
                     </select>
                 </div>
+                <!-- 
+                    <div class="form-group">
+                        <p>Quarto:</p>
+  
+                        <select class="form-control" th:field="*{quarto_id}">
+                            <option th:each="quarto : ${quartos}" th:value="${quarto.id}" th:text="${quarto.tipo}"></option>
+                        </select>
+                    </div>
+                -->
 
                 <div class="form-group">
                     <p>Nome:</p>
@@ -60,7 +69,8 @@
 
                 <div class="form-group button-group">
                     <button type="button" class="btn btn-secondary" th:onclick="'window.location.href=\'' + @{/index} + '\''">Voltar</button>
-                    <input type="submit" value="Reservar" class="btn btn-primary" />
+                    <!-- <input type="submit" value="Reservar" class="btn btn-primary" /> -->
+                   <button type="button" class="btn btn-primary" th:onclick="'window.location.href=\'' + @{/reserva-informacao} + '\''">Reservar</button> 
                 </div>
 
             </form>
