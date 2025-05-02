@@ -5,10 +5,13 @@
 ##
 
 ### Tecnologias aplicadas 🖥🌐⚙
-- **Java Web**
-- **JavaScript**
-- **CSS**
+- **HTML5** - Estrutura estática das páginas.
+- **Java** - Lógica de negócio, conexão com o banco de dados.
+- **CSS** - Estilização das páginas (cores, responsividade).
+- **JavaScript** - Interação nas páginas, validação dos valores.
 - **MySQL** - Banco de dados utilizado para armazenar as informações de reservas e hóspedes.
+- **Spring Boot** - Back-end: lógica, conexão com o banco MySQL.
+- **Bootstrap** - Framework CSS para designs responsivos.
 ##
 
 ### Time de desenvolvedores 🧑💻
