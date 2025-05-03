@@ -1,101 +1,54 @@
 <!DOCTYPE html>
-
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <title>Página de reservas</title>
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" href="/bootstrap/css/bootstrap.min.css">
-
-    <!-- CSS personalizado -->
     <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css" />
 </head>
-
 <body>
     <div class="banner">
-        <!-- Logo -->
-        <img th:src="@{/images/HotelContinental.png}" src="/images/HotelContinental.png" alt="Hotel Continental"
-            height="100px">
-
+        <img th:src="@{/images/HotelContinental.png}" src="/images/HotelContinental.png" alt="Hotel Continental" height="100px">
         <h1>Reserva</h1>
     </div>
-
     <div class="container">
         <h2>Faça sua reserva</h2>
-        <form th:action="@{/adicionar}" th:object="${reserva}" method="POST">
+        <form th:action="@{/reservas/adicionar}" th:object="${reserva}" method="POST">
             <div class="form-group">
                 <p>Check-In:*</p>
                 <input type="date" th:field="*{checkin}" class="form-control" name="checkin" id="checkin" required />
             </div>
-            
             <div class="form-group">
                 <p>Check-Out:*</p>
                 <input type="date" th:field="*{checkout}" class="form-control" name="checkout" id="checkout" required/>
             </div>
-
             <div class="form-group">
                 <p>Quarto:</p>
-
-                <select class="form-control">
-                    <option>Standard</option>
-                    <option>Suíte</option>
-                    <option>Master</option>
+                <select class="form-control" th:field="*{quarto}">
+                    <option th:each="quarto : ${quartos}" th:value="${quarto.id}" th:text="${quarto.tipo}"></option>
                 </select>
             </div>
-            <!-- 
-                    <div class="form-group">
-                        <p>Quarto:</p>
-  
-                        <select class="form-control" th:field="*{quarto_id}">
-                            <option th:each="quarto : ${quartos}" th:value="${quarto.id}" th:text="${quarto.tipo}"></option>
-                        </select>
-                    </div>
-                -->
-                
+
             <div class="form-group">
                 <p>Nome:*</p>
-                <input type="text" th:field="*{hospede.nome}" class="form-control" name="nome" id="nome" required placeholder="Informe seu nome e sobrenome"/>
+                <input type="text" class="form-control" name="nome" id="nome" required placeholder="Informe seu nome e sobrenome"/>
             </div>
-
             <div class="form-group">
                 <p>CPF:*</p>
-                <input type="text" th:field="*{hospede.cpf}" class="form-control" name="cpf" id="cpf" placeholder="Informe seu CPF" />
+                <input type="text" class="form-control" name="cpf" id="cpf" placeholder="Informe seu CPF" />
             </div>
-
             <div class="form-group">
                 <p>Telefone:*</p>
-                <input type="text" th:field="*{hospede.telefone}" class="form-control" name="telefone" id="telefone" placeholder="Informe seu telefone" />
+                <input type="text" class="form-control" name="telefone" id="telefone" placeholder="Informe seu telefone" />
             </div>
 
             <div class="form-group button-group">
-                <button type="button" class="btn btn-secondary"
-                    th:onclick="'window.location.href=\'' + @{/index} + '\''">Voltar</button>
-                <!-- <input type="submit" value="Reservar" class="btn btn-primary" /> -->
-                <button type="button" class="btn btn-primary"
-                    th:onclick="'window.location.href=\'' + @{/reserva-informacao} + '\''">Reservar</button>
+                <button type="button" class="btn btn-secondary" th:onclick="'window.location.href=\'' + @{/index} + '\''">Voltar</button>
+                <input type="submit" value="Reservar" class="btn btn-primary" />
             </div>
-
         </form>
     </div>
-
-    <!-- Código JavScript AQUIII!! -->
-    <!--  <script>
-        $(document).ready(function(){
-            $('#cpf').mask('000.000.000-00');
-            $('#telefone').mask('00 0 0000-0000');
-        });
-    </script>-->
-   
-
-    <!-- Bootstrap JS  -->
     <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}" src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Script.js -->
     <script th:src="@{/js/script.js}" src="/js/script.js"></script>
-    
 </body>
-
 </html>

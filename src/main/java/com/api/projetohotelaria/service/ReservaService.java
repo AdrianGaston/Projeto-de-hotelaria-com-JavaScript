@@ -17,7 +17,7 @@ public class ReservaService {
         return reservaRepository.save(reserva);
     }
     
-    //Lista a reservas
+    //Listas as reservas
     public List<Reserva> listarReservas() {
         return reservaRepository.findAll();
     } 
@@ -34,8 +34,6 @@ public class ReservaService {
         reserva.setCheckin(reservaRequest.getCheckin());
         reserva.setCheckout(reservaRequest.getCheckout());
         reserva.getQuarto();
-        reserva.setTotalDias(reservaRequest.getTotalDias());
-        reserva.setValorTotal(reservaRequest.getValorTotal());
         
         return reservaRepository.save(reserva);
     }
