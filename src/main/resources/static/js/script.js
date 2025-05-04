@@ -1,60 +1,69 @@
-$('#frmRegistro').validate({
-    
-    rules: {
-        checkin: {
-            required: true,
-            date: true
-        },
+$(document).ready(function () {
 
-        checkout: {
-            required: true,
-            date: true
-        },
+    //Validação de check-in e check-out
+    $.validator.addMethod("depoisDoCheckin", function (valorCheckout) {
+        const valorCheckin = $('#checkin').val();
 
-        nome: {
-            required: true,
-            maxlength: 60,
-            minWords: 2
-        },
+        if (!valorCheckin || !valorCheckout) return true;
 
-        cpf: {
-            required: true,
-            maxlength: 11,
-        },
+        const dataCheckin = new Date(valorCheckin);
+        const dataCheckout = new Date(valorCheckout);
 
-        telefone: {
-            required: true,
-            maxlength: 20
+        return dataCheckout > dataCheckin;
+    }, "A data de check-out deve ser posterior à data de check-in.");
+
+    //Validação do formulário
+    $('#frmRegistro').validate({
+        rules: {
+            checkin: {
+                required: true,
+                date: true
+            },
+            checkout: {
+                required: true,
+                date: true,
+                depoisDoCheckin: true
+            },
+            nome: {
+                required: true,
+                maxlength: 60,
+                minlength: 5
+            },
+            cpf: {
+                required: true,
+                maxlength: 11,
+                minlength: 11
+            },
+            telefone: {
+                required: true,
+                maxlength: 20
+            }
+        },
+        //Mensagens
+        messages: {
+            checkin: {
+                required: "Obrigatório informar a data de entrada para realizar a reserva.",
+                date: "Informe uma data válida."
+            },
+            checkout: {
+                required: "Obrigatório informar a data de saída para realizar a reserva.",
+                date: "Informe uma data válida.",
+                depoisDoCheckin: "A data de saída deve ser posterior à data de entrada."
+            },
+            nome: {
+                required: "Informe seu nome para poder realizar a reserva.",
+                maxlength: "O nome não pode conter mais de 60 caracteres.",
+                minlength: "É preciso informar nome e sobrenome."
+            },
+            cpf: {
+                required: "Informe seu CPF para poder realizar a reserva.",
+                maxlength: "Informe um CPF válido, precisa conter 11 dígitos.",
+                minlength: "Informe um CPF válido, precisa conter 11 dígitos."
+            },
+            telefone: {
+                required: "Informe seu telefone para poder realizar a reserva.",
+                maxlength: "Informe um telefone válido."
+            }
         }
-    },
-
-    // MESSAGES
-    messages: {
-        checkin: {
-            required: "Obrigatório informar a data de entrada para realizar a reserva.",
-            date: "Informe uma data válida."
-        },
-
-        checkout: {
-            required: "Obrigatório informar a data de saída para realizar a reserva.",
-            date: "Informe uma data válida."
-        },
-
-        nome: {
-            required: "Informe seu nome para poder realizar a reserva.",
-            maxlength: "O nome não pode conter mais de 60 caracteres.",
-            minWords: "É preciso informar nome e sobrenome."
-        },
-
-        cpf: {
-            required: "Informe seu CPF para poder realizar a reserva.",
-            maxlength: "Informe um CPF válido."
-        },
-
-        telefone: {
-            required: "Informe seu telefone para poder realizar a reserva.",
-            maxlength: "Informe um telefone válido."
-        }
-      
-    }
+    });
 });

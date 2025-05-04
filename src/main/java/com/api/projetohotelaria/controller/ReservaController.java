@@ -61,13 +61,13 @@ public class ReservaController {
         int totalDias = reserva.calcularTotalDias();
         double valorTotal = reserva.calcularValorTotal();
         
-        reserva.setTotalDias(totalDias);//Define totalDias na reserva
-        reserva.setValorTotal(valorTotal);//Define valorTotal na reserva
+        reserva.setTotalDias(totalDias);//Define o total de dias na reserva
+        reserva.setValorTotal(valorTotal);//Define o valor total na reserva
 
         reserva = reservaService.salvarReserva(reserva);//Salvando a reserva no banco
 
         model.addAttribute("reserva", reserva);
-
+        
         return "redirect:/reservas/" + reserva.getId();
     }
 
