@@ -10,13 +10,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("/reservas")
@@ -131,10 +131,10 @@ public class ReservaController {
     }
 
     //Exclui uma reserva
-    @DeleteMapping("/excluir/{id}")
+    @GetMapping("/excluir/{id}")
     public String excluirReserva(@PathVariable Integer id) {
         reservaService.excluirReserva(id);
-
-        return "redirect:/reservas";
+        
+        return "redirect:/index";
     }
 }

@@ -75,11 +75,21 @@
                 Editar Reserva
             </button>
 
+            <!--
             <button type="button" class="btn btn-danger"
                 style="background-color: #dc3545; border-color: #dc3545; color: white;"
                 th:onclick="|if(confirm('Tem certeza que deseja excluir esta reserva?')) window.location.href='@{/reserva/excluir/{id}(id=${reserva.id})}'|">
                 Excluir Reserva
             </button>
+            -->
+             
+            <button type="button" class="btn btn-danger"
+    style="background-color: #dc3545; border-color: #dc3545; color: white;"
+    th:onclick="|if(confirm('Tem certeza que deseja excluir esta reserva?')) window.location.href='@{/reservas/excluir/{id}(id=${reserva.id})}'|">
+    Excluir Reserva
+</button>
+
+
 
             <button type="button" class="btn btn-primary"
                 th:onclick="'window.location.href=\'' + @{/index} + '\''">Confirmar</button>
