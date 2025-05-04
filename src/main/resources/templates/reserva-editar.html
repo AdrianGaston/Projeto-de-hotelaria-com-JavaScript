@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Página de edição de reservas</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" href="/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css" />
+</head>
+
+<body>
+    <div class="banner">
+        <img th:src="@{/images/HotelContinental.png}" src="/images/HotelContinental.png" alt="Hotel Continental"
+            height="100px">
+        <h1>Editar Reserva</h1>
+    </div>
+
+    <div class="container">
+        <h2>Edite sua reserva</h2>
+
+        <!-- Formulário para edição da reserva -->
+        <form id="frmEdicao" th:action="@{/reservas/editar/{id}(id=${reserva.id})}" th:object="${reserva}"
+            method="POST">
+
+            <!-- Check-in -->
+            <div class="form-group">
+                <p>Check-In:*</p>
+                <input type="date" th:field="*{checkin}" class="form-control" id="checkin" name="checkin" required />
+            </div>
+
+            <!-- Check-out -->
+            <div class="form-group">
+                <p>Check-Out:*</p>
+                <input type="date" th:field="*{checkout}" class="form-control" id="checkout" name="checkout" required />
+            </div>
+
+            <!-- Seleção de quarto -->
+            <div class="form-group">
+                <p>Quarto:</p>
+                <select class="form-control" th:field="*{quarto.id}" id="quarto" name="quarto" required>
+                    <option th:each="quarto : ${quartos}" th:value="${quarto.id}" th:text="${quarto.tipo}"></option>
+                </select>
+            </div>
+
+            <br />
+            <li class="list-group-item">
+                <strong>Hóspede:</strong>
+                <span th:text="${reserva.hospede != null ? reserva.hospede.nome : 'Sem hóspede'}"></span>
+            </li>
+
+            <!-- Botões -->
+            <div class="form-group button-group mt-3">
+                <button type="button" class="btn btn-secondary"
+                    th:onclick="'window.location.href=\'' + @{/reservas/{id}(id=${reserva.id})} + '\''">
+                    Voltar
+                </button>
+
+                <input type="submit" value="Salvar alterações" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- jQuery Validate -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}"></script>
+
+    <!-- Script de validação -->
+    <script th:src="@{/js/script.js}"></script>
+
+</body>
+
+</html>

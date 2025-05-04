@@ -1,79 +1,97 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <title>Página principal</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" href="/bootstrap/css/bootstrap.min.css">
+<head>
+    <title>Página principal</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-            <!-- CSS personalizado -->
-            <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css" />
-    </head>
-    <body>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" href="/bootstrap/css/bootstrap.min.css">
 
-        <div class="banner">
-            <!-- Logo -->
-            <img th:src="@{/images/HotelContinental.png}" src="/images/HotelContinental.png" alt="Hotel Continental" height="100px">
+    <!-- CSS personalizado -->
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css" />
+</head>
 
-                <h1>Informações da Reserva</h1>
+<body>
+
+    <div class="banner">
+        <!-- Logo -->
+        <img th:src="@{/images/HotelContinental.png}" src="/images/HotelContinental.png" alt="Hotel Continental"
+            height="100px">
+
+        <h1>Informações da Reserva</h1>
+    </div>
+
+    <br /><br />
+
+    <div class="container">
+        <h2>Detalhes da sua Reserva</h2>
+
+        <br />
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>ID:</strong> <span th:text="${reserva.id}"></span>
+            </li>
+
+            <br />
+            <li class="list-group-item">
+                <strong>Check-In:</strong> <span th:text="${#temporals.format(reserva.checkin, 'dd/MM/yyyy')}"></span>
+            </li>
+
+            <br />
+            <li class="list-group-item">
+                <strong>Check-out:</strong> <span th:text="${#temporals.format(reserva.checkout, 'dd/MM/yyyy')}"></span>
+
+            </li>
+
+            <br />
+            <li class="list-group-item">
+                <strong>Quarto:</strong> <span
+                    th:text="${reserva.quarto != null ? reserva.quarto.tipo : 'Sem quarto'}"></span>
+            </li>
+
+            <br />
+            <li class="list-group-item">
+                <strong>Hóspede:</strong> <span
+                    th:text="${reserva.hospede != null ? reserva.hospede.nome : 'Sem hospede'}"></span>
+            </li>
+
+            <br />
+            <li class="list-group-item">
+                <strong>Total dias:</strong> <span th:text="${reserva.totalDias}"></span>
+            </li>
+
+            <br />
+            <li class="list-group-item">
+                <strong>Valor total: R$</strong> <span th:text="${reserva.valorTotal}"></span>
+
+            </li>
+        </ul>
+
+        <br/>
+        <div class="form-group button-group">
+            <button type="button" class="btn btn-secondary"
+                th:onclick="'window.location.href=\'' + @{/reservas/editar/{id}(id=${reserva.id})} + '\''">
+                Editar Reserva
+            </button>
+
+            <button type="button" class="btn btn-danger"
+                style="background-color: #dc3545; border-color: #dc3545; color: white;"
+                th:onclick="|if(confirm('Tem certeza que deseja excluir esta reserva?')) window.location.href='@{/reserva/excluir/{id}(id=${reserva.id})}'|">
+                Excluir Reserva
+            </button>
+
+            <button type="button" class="btn btn-primary"
+                th:onclick="'window.location.href=\'' + @{/index} + '\''">Confirmar</button>
         </div>
 
-        <br/><br/>
+    </div>
 
-        <div class="container">
-            <h2>Detalhes da sua Reserva</h2>
+    <!-- Bootstrap JS -->
+    <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}" src="/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-            <br/>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <strong>ID:</strong> <span th:text="${reserva.id}"></span>
-                </li>
+    <!-- Script.js -->
+    <script th:src="@{/js/script.js}" src="/js/script.js"></script>
+</body>
 
-                <br/>
-                <li class="list-group-item">
-                    <strong>Check-In:</strong> <span th:text="${#temporals.format(reserva.checkin, 'dd/MM/yyyy')}"></span>
-                </li>
-
-                <br/>
-                <li class="list-group-item">
-                    <strong>Check-out:</strong> <span th:text="${#temporals.format(reserva.checkout, 'dd/MM/yyyy')}"></span>
-
-                </li>
-
-                <br/>
-                <li class="list-group-item">
-                    <strong>Quarto:</strong> <span th:text="${reserva.quarto != null ? reserva.quarto.tipo : 'Sem quarto'}"></span>
-                </li>
-
-                <br/>
-                <li class="list-group-item">
-                    <strong>Hóspede:</strong> <span th:text="${reserva.hospede != null ? reserva.hospede.nome : 'Sem hospede'}"></span>
-                </li>
-
-                <br/>
-                <li class="list-group-item">
-                    <strong>Total dias:</strong> <span th:text="${reserva.totalDias}"></span>
-                </li>
-
-                <br/>
-                <li class="list-group-item">
-                    <strong>Valor total: R$</strong> <span th:text="${reserva.valorTotal}"></span>
-
-                </li>
-            </ul>
-
-            <br/>
-            <div class="form-group button-group">
-                <button type="button" class="btn btn-primary" th:onclick="'window.location.href=\'' + @{/index} + '\''">Ok</button>
-
-            </div>
-        </div>
-
-        <!-- Bootstrap JS -->
-        <script th:src="@{/bootstrap/js/bootstrap.bundle.min.js}" src="/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-        <!-- Script.js -->
-        <script th:src="@{/js/script.js}" src="/js/script.js"></script>
-    </body>
 </html>

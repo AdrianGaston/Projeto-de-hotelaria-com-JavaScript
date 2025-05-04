@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -31,7 +30,17 @@ public class ReservaController {
 
     @Autowired
     private HospedeService hospedeService;
-
+    
+    //Mostra formulário para criar uma nova reserva
+    @GetMapping("/nova")
+    public String mostrarFormularioReserva(Model model) {
+        List<Quarto> quartos = quartoService.listarQuartos();
+        Reserva reserva = new Reserva();
+        model.addAttribute("quartos", quartos);
+        model.addAttribute("reserva", reserva);
+        return "reservar";
+    }
+    
     //Criando nova reserva
     @PostMapping("/adicionar")
     public String criarReserva(
@@ -70,42 +79,55 @@ public class ReservaController {
         
         return "redirect:/reservas/" + reserva.getId();
     }
-
-    //Mostra formulário para criar uma nova reserva
-    @GetMapping("/novo")
-    public String mostrarFormularioReserva(Model model) {
+    
+    //Mostra o formulário para editar uma reserva
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEdicao(@PathVariable Integer id, Model model) {
+        Reserva reserva = reservaService.reservaById(id);
+        
         List<Quarto> quartos = quartoService.listarQuartos();
-        Reserva reserva = new Reserva();
-        model.addAttribute("quartos", quartos);
+        
         model.addAttribute("reserva", reserva);
-        return "reservar";
+        model.addAttribute("quartos", quartos);
+        return "reserva-editar";
     }
+    
+    //Atualiza a reserva
+    @PostMapping("/editar/{id}")
+    public String atualizarReserva(@PathVariable Integer id, @ModelAttribute Reserva reservaAtualizada) {
+        //Recupera a reserva original
+        Reserva reservaExistente = reservaService.reservaById(id);
 
+        //Atualiza apenas os campos
+        reservaExistente.setCheckin(reservaAtualizada.getCheckin());
+        reservaExistente.setCheckout(reservaAtualizada.getCheckout());
+
+        Quarto quarto = quartoService.quartoById(reservaAtualizada.getQuarto().getId());
+        reservaExistente.setQuarto(quarto);
+
+        //Atualiza total de dias e valor total
+        reservaExistente.setTotalDias(reservaExistente.calcularTotalDias());
+        reservaExistente.setValorTotal(reservaExistente.calcularValorTotal());
+
+        reservaService.atualizarReserva(id, reservaExistente);
+
+        return "redirect:/reservas/" + id;
+    }
+   
     //Listar todas as reservas
+    @GetMapping
     public String listarReservas(Model model) {
         List<Reserva> reservas = reservaService.listarReservas();
-
         model.addAttribute("reservas", reservas);
         return "listarReservas";
     }
 
-    //Recupera uma reserva pelo ID
+    // Recupera uma reserva pelo ID
     @GetMapping("/{id}")
     public String obterReserva(@PathVariable Integer id, Model model) {
         Reserva reserva = reservaService.reservaById(id);
-
         model.addAttribute("reserva", reserva);
-     
         return "reserva-informacao";
-    }
-
-    //Atualizar uma reserva
-    @PutMapping
-    public String atualizarReserva(@PathVariable Integer id, @ModelAttribute Reserva reserva) {
-        reserva.setId(id);
-        reservaService.atualizarReserva(id, reserva);
-
-        return "redirect:/reservas";
     }
 
     //Exclui uma reserva
