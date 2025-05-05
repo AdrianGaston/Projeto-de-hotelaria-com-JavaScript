@@ -1,4 +1,4 @@
-# Projeto de hotelaria com JavaScript 📝🏨
+# Sistema de Reservas de Hotel com Spring Boot e JavaScript 📝🏨
 
 ### Status do projeto 🚧📈
 - Em desenvolvimento...
@@ -15,11 +15,11 @@
 ##
 
 ### Time de desenvolvedores 🧑💻
-- ***Adrian Herrmann*** - Desenvolvedor principal.
+- ***Adrián Herrmann*** - Desenvolvedor principal.
 ##
 
 ### Objetivo do software 🎯🏆
-Permitir que os usuários realizem reservas de hotel de forma eficiente e rápida, possibilitando o gerenciamento de reservas mediante os quartos, check-ins, check-outs e informações dos hóspedes.
+Permitir que os usuários realizem reservas de hotel de forma eficiente e rápida, possibilitando o gerenciamento de reservas mediante os quartos, check-in's, check-out's e informações dos hóspedes.
 ##
 
 ### Funcionalidades do sistema 🛠🧩

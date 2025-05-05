@@ -20,7 +20,7 @@
         <h2>Edite sua reserva</h2>
 
         <!-- Formulário para edição da reserva -->
-        <form id="frmEdicao" th:action="@{/reservas/editar/{id}(id=${reserva.id})}" th:object="${reserva}"
+        <form id="frmEdicao" th:action="@{/reserva/editar/{id}(id=${reserva.id})}" th:object="${reserva}"
             method="POST">
 
             <!-- Check-in -->
@@ -45,14 +45,13 @@
 
             <br />
             <li class="list-group-item">
-                <strong>Hóspede:</strong>
-                <span th:text="${reserva.hospede != null ? reserva.hospede.nome : 'Sem hóspede'}"></span>
+                <strong>Hóspede:</strong> <span th:text="${reserva.hospede.nome}"></span>
             </li>
 
             <!-- Botões -->
             <div class="form-group button-group mt-3">
                 <button type="button" class="btn btn-secondary"
-                    th:onclick="'window.location.href=\'' + @{/reservas/{id}(id=${reserva.id})} + '\''">
+                    th:onclick="'window.location.href=\'' + @{/reserva/{id}(id=${reserva.id})} + '\''">
                     Voltar
                 </button>
 

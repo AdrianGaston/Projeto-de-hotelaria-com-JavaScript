@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
-@RequestMapping("/reservas")
+@RequestMapping("/reserva")
 public class ReservaController {
 
     @Autowired
@@ -50,7 +50,11 @@ public class ReservaController {
             @RequestParam("telefone") String telefone,
             @RequestParam("quarto") Integer quartoId,
             Model model) {
-
+        
+        //Recupera o Quarto do banco de dados usando o ID
+        Quarto quarto = quartoService.quartoById(quartoId);
+        reserva.setQuarto(quarto);//Adicionando o quarto na reserva
+        
         //Criando novo objeto Hospede
         Hospede hospede = new Hospede();
         hospede.setNome(nome);
@@ -60,11 +64,7 @@ public class ReservaController {
         //Salva o Hospede no banco de dados
         hospede = hospedeService.salvarHospede(hospede);
 
-        //Recupera o Quarto do banco de dados usando o ID
-        Quarto quarto = quartoService.quartoById(quartoId);
-        
         reserva.setHospede(hospede);//Adicionando o hospede na reserva
-        reserva.setQuarto(quarto);//Adicionando o quarto na reserva
 
         //Calcula do total de dias e valor total da reserva
         int totalDias = reserva.calcularTotalDias();
@@ -77,7 +77,7 @@ public class ReservaController {
 
         model.addAttribute("reserva", reserva);
         
-        return "redirect:/reservas/" + reserva.getId();
+        return "redirect:/reserva/" + reserva.getId();
     }
     
     //Mostra o formulário para editar uma reserva
@@ -111,7 +111,7 @@ public class ReservaController {
 
         reservaService.atualizarReserva(id, reservaExistente);
 
-        return "redirect:/reservas/" + id;
+        return "redirect:/reserva/" + id;
     }
    
     //Listar todas as reservas
@@ -122,7 +122,7 @@ public class ReservaController {
         return "listarReservas";
     }
 
-    // Recupera uma reserva pelo ID
+    //Recupera uma reserva pelo ID
     @GetMapping("/{id}")
     public String obterReserva(@PathVariable Integer id, Model model) {
         Reserva reserva = reservaService.reservaById(id);

@@ -23,7 +23,6 @@
     </div>
 
     <br /><br />
-
     <div class="container">
         <h2>Detalhes da sua Reserva</h2>
 
@@ -41,19 +40,16 @@
             <br />
             <li class="list-group-item">
                 <strong>Check-out:</strong> <span th:text="${#temporals.format(reserva.checkout, 'dd/MM/yyyy')}"></span>
-
             </li>
 
             <br />
             <li class="list-group-item">
-                <strong>Quarto:</strong> <span
-                    th:text="${reserva.quarto != null ? reserva.quarto.tipo : 'Sem quarto'}"></span>
+                <strong>Quarto:</strong> <span th:text="${reserva.quarto.tipo}"></span>
             </li>
 
             <br />
             <li class="list-group-item">
-                <strong>Hóspede:</strong> <span
-                    th:text="${reserva.hospede != null ? reserva.hospede.nome : 'Sem hospede'}"></span>
+                <strong>Hóspede:</strong> <span th:text="${reserva.hospede.nome}"></span>
             </li>
 
             <br />
@@ -64,32 +60,21 @@
             <br />
             <li class="list-group-item">
                 <strong>Valor total: R$</strong> <span th:text="${reserva.valorTotal}"></span>
-
             </li>
         </ul>
 
-        <br/>
+        <br />
         <div class="form-group button-group">
             <button type="button" class="btn btn-secondary"
-                th:onclick="'window.location.href=\'' + @{/reservas/editar/{id}(id=${reserva.id})} + '\''">
+                th:onclick="'window.location.href=\'' + @{/reserva/editar/{id}(id=${reserva.id})} + '\''">
                 Editar Reserva
             </button>
 
-            <!--
             <button type="button" class="btn btn-danger"
-                style="background-color: #dc3545; border-color: #dc3545; color: white;"
+                style="background-color: #dc3545; border-color: red; color: white;"
                 th:onclick="|if(confirm('Tem certeza que deseja excluir esta reserva?')) window.location.href='@{/reserva/excluir/{id}(id=${reserva.id})}'|">
                 Excluir Reserva
             </button>
-            -->
-             
-            <button type="button" class="btn btn-danger"
-    style="background-color: #dc3545; border-color: #dc3545; color: white;"
-    th:onclick="|if(confirm('Tem certeza que deseja excluir esta reserva?')) window.location.href='@{/reservas/excluir/{id}(id=${reserva.id})}'|">
-    Excluir Reserva
-</button>
-
-
 
             <button type="button" class="btn btn-primary"
                 th:onclick="'window.location.href=\'' + @{/index} + '\''">Confirmar</button>

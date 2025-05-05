@@ -13,7 +13,7 @@
     </div>
     <div class="container">
         <h2>Faça sua reserva</h2>
-        <form id="frmRegistro" th:action="@{/reservas/adicionar}" th:object="${reserva}" method="POST">
+        <form id="frmRegistro" th:action="@{/reserva/adicionar}" th:object="${reserva}" method="POST">
             <div class="form-group">
                 <p>Check-In:*</p>
                 <input type="date" th:field="*{checkin}" class="form-control" name="checkin" id="checkin" required />
